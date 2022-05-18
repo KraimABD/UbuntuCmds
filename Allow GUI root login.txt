@@ -1,0 +1,8 @@
+$ sudo passwd
+
+$vi /etc/gdm3/custom.conf     "add:   AllowRoot=true"      GDM=GNOME Display Manager
+
+$vi /etc/pam.d/gdm-password    "comment  #auth   required        pam_succeed_if.so user != root quiet_success"     PAM=Pluggable Authentication Modules
+
+$ reboot
+

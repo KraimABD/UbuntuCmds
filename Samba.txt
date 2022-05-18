@@ -1,0 +1,76 @@
+﻿ Installation : apt-get install samba
+
+Créeation des dossiers de partage  : mkdir -p /.../.../dossier1     mkdir -p /.../.../dossier2
+
+ Céeation des utilisateurs : useradd user1
+							 passwd user1
+											useradd user2
+											passwd user2
+
+Configuration du fichier :  /etc/samba/smb.conf
+
+la ligne 89         # le nom de groupe de travail
+							workgroup = WORKGROUP
+					# Nom de Server Samba
+							server string = server1
+					#le Nom netbios de serveur samba
+							netbios name = server1
+					#adresse ip de interface de serveur samba
+							interfaces = 192.168.1.'100' 255.255.255.0
+					#les machines ou plage autorisées
+					hosts allow = 192.168.1.
+					# la version de Protoco = SMB2
+		
+		
+La ligne 126		security = user1
+					passdb backend = tdbsam
+					
+					
+Les dernieres lignes   
+						#share
+			[dos1]	
+			comment = Dossier partagé "dos1" pour de server samba
+					path = /partage/dos1
+					#droit de modification
+					writable = yes
+					share mode = yes
+					valid users = user1
+			
+				
+			[dos2]	
+			comment = Dossier partagé "dos1" pour de server samba
+					path = /partage/dos1
+					#droit de modification
+					writable = no       #read only = yes
+					share mode = yes
+					valid users = user2     " (user2,@groupe)    ou  public = yes  " 
+					
+					
+		[printers] 
+		
+					comment = All Printers
+					
+
+lister les comptes samba 													lister les dossiers partagés par samba : testparm
+							pdbedit -L
+							
+							
+Création des comptes samba:   smbpasswd   -a   'user1'
+							  smbpasswd   -a  'user2'
+							  
+							  
+Démarrer le service samba
+	
+			service smb start
+
+désactiver le pare feu :
+                              /etc/selinux/config        SELINUX= disabled
+							  
+sudo setenforce 0
+
+
+
+windows => cmd => \\192.168.1.'100'
+	user1 => mot de passe
+	user2 => mot de passe
+	

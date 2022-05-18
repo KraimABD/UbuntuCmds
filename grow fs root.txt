@@ -1,0 +1,26 @@
+# ls /sys/class/scsi_device/
+
+X:X:X:X
+
+
+# echo 1 > /sys/class/scsi_device/X\:X\:X\:X/device/rescan
+
+# growpart /dev/sda n (la dernière)
+
+# pvresize /dev/sda(n)
+
+# lvextend -r -l +100%FREE /dev/name-of-volume-group/name-of-logical-volume/
+
+(-r - Redimensionner le système de fichiers sous-jacent avec le volume logique)
+
+# resize2fs /dev/name-of-volume-group/root (pour ext4)
+
+# xfs_growfs /        (pour xfs)
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+﻿Ajouter un disque de stockage:  Méthode graphique
+pour détecter le nouveau Disque dûr : echo "- - -" >> /sys/class/scsi_host/host0/scan
+Pour afficher les disques:  fdisk -l
+
+
+
+Pour partitionner les disques: fdisk /dev/sd(a/b/c/...)   =>  d=delet  n=add p=voir  q=quitter  w=sauvegarde 
+														  => n => Primary => laisser le champs vide => laisser le champs vide => +'2'G   (la taille variable)
+														  => w (pour sauvegarder)
+Création d'un Raid avec un spare dés la creation:  # mdadm -C /dev/'md0' -l 1 --raid-device='2' /dev/'sdc1' /dev/'sdd1' --spare-devices='1' /dev/'sdv1'													 
+installation : sudo apt-get install mdadm
+ mdadm  --create /dev/'md0' --level='5'  --raid-device='3' /dev/'sdb1'  /dev/'sdc1' /dev/'sdd1'
+formatage du volume mkfs.ext4  /dev/'md0'
+Montage du volume :  créer un dossier   mkdir /mnt/'md0'
+				  : mount  /dev/'md0'  /mnt/'raid'
+				  
+Voir les détails Raid :   mdadm --detail /dev/'md0'
+ 
+Pour faire tomber en panne à un disque : mdadm /dev/'md0'  --fail /dev/'sdc1'
+Pour ajouter un disque au Raid : mdadm /dev/'md0'  -a /dev/'sdd2'   ( les 2 disques sont bons alors ce nouveau disque sera en "Spare".
+                                                                     Sinon la synchronisation commencera automatiquement)
+il sera possible de suivre l'état d'avancement: # cat /proc/mdstat
+																	 
+Pour supprimer un dsique du Raid : mdadm -s dev/'sdb1'           # mdadm /dev/'md0' --set-faulty /dev/'sdc1'      # mdadm /dev/'md0' --remove /dev/'sdc1'
+
+
+supprimer le Raid: mdadm --zero-superblock /dev/'sdb1'  /dev/'sdc1'   /dev/'sdd1'

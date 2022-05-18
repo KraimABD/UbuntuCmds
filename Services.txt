@@ -1,0 +1,32 @@
+					System V
+
+
+
+Lister les services qui tournent sur le système
+
+	ps -o  ppid,pid;tt,cmd			( -o précise les champs que vous souhaitez voir apparaître)
+
+
+
+Lister tous les services  éxistants
+
+	ls /etc/init.d/
+
+
+Commande start stop reload status
+
+	/etc/init.d/'non de service' start	pour démarrer le service
+	/etc/init.d/'non de service' stop	pour arrêter le service
+	/etc/init.d/'non de service' status	pour afficher le statut
+	/etc/init.d/'non de service' reload	pour mettre à jour la configuration sans arrêter le service
+
+
+runlevels	
+		0	Pour arrêter le système
+		1 	Single user
+		2-5	Normal
+/etc/rc2.d/
+
+
+Upstart 
+	-sudo initctl start (nom de service)

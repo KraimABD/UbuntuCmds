@@ -1,0 +1,30 @@
+﻿boucle WHILE:
+ 
+#!/bin/bash
+i=1
+while [ $i  -le 10 ]
+do
+echo "la valeur du variable: $i"
+let "i=$i+1"
+done
+_______________________________________________
+boucle FOR:
+
+#!/bin/bash
+for nom in 'ahmed' 'hassan' 'ali' 'sanaa'
+do
+echo "salam $nom"
+done
+________________________________________________
+
+#!/bin/bash
+list=`ls`
+for nom in $list
+do
+echo "$nom"
+done
+_________________________________________________
+commande 'seq'   sequence entre valeur et autre valeur
+
+seq 1  10      seq 9   99  ...
+

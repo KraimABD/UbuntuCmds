@@ -1,0 +1,31 @@
+--extend vg redhat8--  pv resize  volumegroup  /dev/sd*
+--lvcreate into vg created déjà-- 	pvchange -x y /dev/sd*
+
+1- Create the LVM2 logical volume
+
+	lvcreate  -L -c '2G' -n /dev/groupevolume/myvolume
+
+
+
+
+2-Format the new swap space:
+
+	mkswap /dev/VolGroup00/LogVol02
+
+
+
+3-Add the following entry to the /etc/fstab file:
+
+	/dev/groupevolume/myvolume swap swap defaults 0 0
+
+
+
+4-Enable the  logical volume:
+
+	swapon 	/dev/groupevolume/myvolume
+
+
+
+5-Obtenez l'UUID du périphérique d'échange
+
+	blkid / dev / mapper / clear_htswap

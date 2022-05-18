@@ -1,0 +1,31 @@
+﻿pour détecter le nouveau Disque dûr : echo "- - -" >> /sys/class/scsi_host/host0/scan
+
+installation lvm2:   sudo apt-get install lvm2
+
+Créer  volume physique :  pvcreate /dev/'sdb3' /dev/'sdc3'  /dev/'sdd3'
+Créer  Groupe Volume   : vgcreate  'groupevolume' /dev/'sdb3'   /dev/'sdc3'   /dev/'sdd3'
+Créer Volume Logique   :  sudo lvcreate  -L '2G' -n /dev/'groupevolume'/'myvolume'
+ 
+ Formatage du filesystem:  sudo mkfs.ext4  /dev/'groupevolume'/'myvolume'
+ Créer un dossier de montage:  sudo mkdir /'mnt'/'lvm'
+ 
+ Montage : sudo mount  /dev/'groupevolume'/'myvolume'    /'mnt'/'lvm'
+ Démontage: umount  /'mnt'/'lvm'
+afficher les filesystems : df -h
+ 
+ pour définire une autre taille: sudo lvresize -L '1.5G'    /dev/'groupevolume'/'myvolume'
+ pour agrandir la taille: sudo lvresize -L  +'1.5G'    /dev/'groupevolume'/'myvolume'
+ pour diminuer la taille : sudo lvresize -L  -'1.5G'    /dev/'groupevolume'/'myvolume'
+
+Formater mkfs.ext4 /dev/'groupevolume'/'myvolume'
+pour voir df -h
+supprimer le groupvolume : sudo vgremove   /dev/groupevolume 
+supprimer les disque physiques : sudo  pvremove   /dev/'sdb3'  /dev/'sdc3' /dev/'sdd3'
+
+ extend
+
+pour modifier la taille du PV : pvresize  /dev/sda(b,c..)
+pour modifier le LV lvextend -l +100%FREE /dev/volume groupe/LV
+modifier volume groupe:	vgextend ubuntu-vg /dev/sda3
+
+echo "- - -" > /sys/class/scsi_host/host0/scan				pour scanner les disqeus.

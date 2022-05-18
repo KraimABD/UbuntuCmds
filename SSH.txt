@@ -1,0 +1,6 @@
+﻿Le port par defaut : 22    Protocole:22
+installation : sudo apt-get install openssh-server
+
+Editer le ficher dela configuration:  /etc/ssh/sshd_config            PermitRootLogin   yes  (connexion directe root) 
+																
+Redemarrer le service sshd : /etc/init.d/sshd restart   ou service sshd restart         (stop start) mieux

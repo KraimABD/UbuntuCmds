@@ -1,0 +1,51 @@
+﻿#!/bin/bash
+
+read nom
+
+if [ $nom1 = $nom2]
+then
+   	echo "salut $nom"
+elif [ $nom =  "otmane" ]
+then
+	echo "salut $nom"
+else
+	echo " je ne te connait pas"
+fi
+_______________________________________________________________________________________
+Les différents types de tests
+Il est possible d’effectuer trois types de tests différents en bash :
+
+- des tests sur des chaînes de caractères ;
+- des tests sur des nombres ;
+- des tests sur des fichiers.
+_______________________________________________________________________________________
+comparaison chaine de caractere:
+
+$chaine1 = $chaine2    ou   $chaine1 == $chaine2
+$chaine1 != $chaine2
+ -n $chaine  (vérifier si la chaine n'est pas vide)
+ -z $chaine	 (vérifier si la chaine est vide)
+ 
+ comparaison des nombres:
+ 
+ $num1 -eq (=) $num2	$num1 -ne (!=) $num2		$num1 -lt (<) $num2
+ $num1 -le (<=) $num2	$num1 -gt (>) $num2			$num1 -ge (>=) $num2
+ 
+ comparaison des fichiers:
+ -e $nomfichier :Vérifie si le fichier existe.
+ -d $nomfichier	:Vérifie si le fichier est un répertoire. N'oubliez pas que sous Linux, tout est considéré comme un fichier, même un répertoire !
+ -f $nomfichier	:Vérifie si le fichier est un… fichier. Un vrai fichier cette fois, pas un dossier.
+ -L $nomfichier	:Vérifie si le fichier est un lien symbolique (raccourci).
+ -r $nomfichier	:Vérifie si le fichier est lisible (r).
+ -w $nomfichier	:Vérifie si le fichier est modifiable (w).
+ -x $nomfichier	:Vérifie si le fichier est exécutable (x).
+ $fichier1 -nt $fichier2 :Vérifie sifichier1est plus récent quefichier2(newerthan).
+ $fichier1 -ot $fichier2 :Vérifie sifichier1est plus vieux quefichier2(olderthan).
+ _______________________________________________________________________________________
+  effectuer plusieurs tests à la fois
+  if [] && []         et
+  if [] || []		  ou
+  _______________________________________________________________________________________
+  
+ iverser un test '!'   ( if [! -e fichier ]	) => le fichier n'existe pas
+ 

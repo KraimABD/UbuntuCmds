@@ -1,0 +1,21 @@
+affiche tous les logs gérés par systemd par ordre chronologiques
+
+	- journalctl
+
+
+afficher les logs depuis le dernier démarrage du système
+
+	- journalctl -b
+
+
+afficher les logs du kernel depuis le dernier démarrage (equivalente=dmesg)
+
+	- journalctl -b -k
+
+
+d’afficher uniquement les logs d’un service
+
+	- journalctl -u (nom d'unité).service
+  exemple:
+	- journalctl -u smbd.service
+

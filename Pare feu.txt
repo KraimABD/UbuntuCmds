@@ -1,0 +1,55 @@
+﻿- Voir l'état du firewall
+
+	ufw status
+
+
+- Ouvrir les connexions SSH TCP port 22
+
+	ufw allow ssh
+
+
+- Les configurations par défaut
+
+	ufw default allow outgoing
+	ufw default deny incoming
+
+
+- Autoriser le port TCP 2222
+
+	ufw allow 2222/tcp
+
+- Autoriser le port TCP 2323
+
+	Autoriser le port TCP 2323
+
+
+- Autoriser ssh d'un serveur à l'autre.
+
+	ufw allow proto tcp from 202.54.2.5 to 172.24.13.45 port 22
+	ufw limit ssh
+
+
+- Activer le firewall
+
+	ufw enable
+	
+
+- Vérifier l'état
+
+	systemctl status ufw.service
+ 
+
+- Désactiver le firewall
+
+	ufw disable
+
+
+- Ouvrez des connexions / ports entrants spécifiques
+
+	ufw allow 80/tcp comment 'accept Apache'
+	ufw allow 443/tcp comment 'accept HTTPS connections'
+	ufw allow 1194/udp comment 'OpenVPN server'
+
+- Lister les règles existantes
+
+	sudo ufw status numbered

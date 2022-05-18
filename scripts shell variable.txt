@@ -1,0 +1,27 @@
+﻿créer un fichier del'extension .sh : touch  "script".sh
+ajouter en haut du fichier:  #!/bin/bash
+entrer le script : exemple : mkdir dossier1 
+donner le droit d'éxecuter pour tout le monde : chmod a+x  "script".sh
+executer le script:  ./script.sh 
+le dossier1 va se créer
+_____________________________________________________________________________
+read (entrer les données)
+echo (afficher les données)
+$variable  
+'$variable' => $variable        "$variable => la valeur du variable" 
+`$variable`=>(interpréter la commande entre la variable) ex: v=`pwd` => /etc/network..
+ex:
+#!/bin/bash
+read -p "entrez votre nom:" nom
+echo "bonjour $nom"
+_____________________________________________________________________________
+Pour des opérations mathématiques :
+#!/bin/bash
+let "a=5"
+let "b=6"
+let "c=a+b"
+echo $c
+_____________________________________________________________________________
+tableau=('valeur0' 'valeur1' 'valeur2')
+$(tableau[2]} 
+tableau[2]='valeur2'

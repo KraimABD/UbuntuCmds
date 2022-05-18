@@ -1,0 +1,26 @@
+﻿Le rôle decaseest de tester la valeur d'une même variable, mais de manière plus concise et lisible.
+elle remplace "if elif elif elif else ......"
+_________________________________________________________________
+
+#!/bin/bash
+
+case $1 in
+        "Bruno")
+                echo "Salut Bruno !"
+                ;;
+        "Michel")
+                echo "Bien le bonjour Michel"
+                ;;
+        "Jean")
+                echo "Hé Jean, ça va ?"
+                ;;
+        *)
+                echo "J'te connais pas, ouste !"
+                ;;
+esac
+____________________________________________________________________
+ *) = else 
+ esac = fi    (case à l'envers)
+ 
+ on peut utiliser ou et et , mais il faut pas mettre || il suffit décrire une |;
+ 

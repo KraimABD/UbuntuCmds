@@ -1,0 +1,36 @@
+﻿ Installation : sudo apt-get install samba
+Tout d'abord, modifiez les couples clé/valeur suivantes dans la section [global] de /etc/samba/smb.conf :
+							
+							workgroup = EXAMPLE
+							…
+							security = user
+							
+Le paramètre security situé plus bas dans la section [global] est commenté par défaut. Modifiez également EXEMPLE afin de l'adapter à votre environnement.
+
+
+
+Créez une nouvelle section à la fin du fichier (ou décommentez un des exemples) pour le dossier à partager :
+
+					[share]
+					comment = Dossier partagé sur le serveur Ubuntu
+					path = /srv/samba/share
+					browsable = yes
+					guest ok = yes
+					read only = no
+					create mask = 0755
+					
+					
+1- comment : une brève description du partage. Adaptez-le à vos besoins.
+2- path : l'emplacement du dossier à partager.Cet exemple utilise /srv/samba/nom_partage car selon la norme de la hiérarchie des systèmes de fichiers (Filesystem Hierarchy Standard (FHS)), /srv est l'emplacement où doivent se trouver les données à servir sur le réseau. Techniquement, les partages Samba peuvent être placés n'importe où sur le système de fichiers tant que les permissions sont correctes, mais le respect des standards est recommandé.
+3- browsable : autorise les clients Windows à parcourir le répertoire partagé en utilisant l'explorateur de fichiers de Windows.
+4- guest ok : permet aux clients de se connecter au répertoire partagé sans fournir de mot de passe.
+5- read only : détermine si le partage est en lecture seule ou si les privilèges en écriture sont accordés. Les droits d'écriture sont accordés seulement si la valeur est no. Comme on le voit dans cet exemple, si la valeur est yes, alors l'accès au partage est en lecture seule.
+6- create mask : détermine les permissions des fichiers nouvellement créés.
+
+Maintenant que Samba est configuré, le répertoire doit être créé et les permissions modifiées. Depuis un terminal, tapez :
+sudo mkdir -p /srv/samba/share
+sudo chown nobody:nogroup /srv/samba/share/
+
+Pour finir, redémarrez les services samba pour activer la nouvelle configuration :
+
+	sudo service smbd stop  /start  /restart

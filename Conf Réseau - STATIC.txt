@@ -1,0 +1,29 @@
+﻿Voir la configuration de la carte réseau: ifconfig
+
+Editer le fichier : etc/network/interfaces
+ajouter: 
+auto 'nom du port: eth0, en0p3s,...'
+iface 'nom du port: eth0, en0p3s,...' inet 'static/dhcp'
+address '192.168.1.x'
+netmask '255.255.255.0'
+broadcast '192.168.1.255'  (diffusion)
+geteway '192.168.1.1'  (passerelle ,router) 
+
+redemarrer le service network: service networking restart
+                        ou   : etc/init.d/networking restart
+
+
+
+
+éditer le fichier : /etc/netplan/01-network-manager-all.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+     dhcp4: no
+     addresses: [192.168.1.233/24]
+     gateway4: 192.168.1.1
+     nameservers:
+       addresses: [8.8.8.8,8.8.4.4]

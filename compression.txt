@@ -1,0 +1,30 @@
+Archiver
+_____________________________________________________________________
+
+la commande: tar pour assembler des fichiers dans une archive
+
+tar --cvf 'nouveau_dossier_compressé.tar'   'le nom de dossier'  (pour compresser)
+tar -xvf 'nouveau_dossier_compressé.tar'      (pour extraire)
+
+tar options:  cvf :
+
+-c: créer un fichier tar
+-v: afficher les détails des operations
+-f: assembler l'archive dans un fichier
+-tf : afficher le contenu de l'archive sans l'extraire
+-rvf: ajouter un fichier à l'archive
+-xvf: extraire les fichiers de l'archive
+
+compresser 
+
+pour la compression : gzip(vitesse) ou bzip2(lente qualité)
+.tar.gzip
+.tar.bz2
+
+gzip  'nouveau_dossier_compressé.tar' => 'nouveau_dossier_compressé.tar.gz'
+gunzip 'nouveau_dossier_compressé.tar.gz'  => 'nouveau_dossier_compressé.tar'
+
+bzip2  'nouveau_dossier_compressé.tar' => 'nouveau_dossier_compressé.tar.bz2'
+bunzip2 'nouveau_dossier_compressé.tar.bz2'  => 'nouveau_dossier_compressé.tar'
+ 
+ 

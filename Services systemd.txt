@@ -1,0 +1,67 @@
+Démarrer, arrêter, reload, statut, enable, disable
+
+	- systemctl start (nom de service)
+
+
+
+liste toutes les unités “actives”
+
+	- systemctl list-units
+   Or
+	- systemctl
+
+
+
+afficher que les unités de type “service” 
+
+	- systemctl list-units --type=service
+
+
+Les unités peuvent être de différents types : service, montage, périphérique, etc
+
+
+Afficher le contenu du fichier unité
+
+	- systemctl cat (nom de service).service
+   exemple: systemctl edit smbd.service
+
+
+
+ créer un fichier de “surcharge” qui a la priorité sur le fichier original
+
+	-systemctl edit smbd.service
+
+éditer directement le fichier de configuration l'orginal
+
+	- systemctl edit --full smbd.service
+
+
+éditer un fichier unité de systemd et faire prendre en compte vos changements au système
+
+	-systemctl daemon-reload
+
+
+target(systemd)=runlevels (systemV)
+ 
+
+lister les dépendances d’une unité
+
+	- systemctl list-dependencies graphical.target
+
+
+voir la target par défaut
+
+	- systemctl get-default
+
+
+ passer en mode de secours
+	
+	- systemctl isolate rescue.target
+
+ fixer  graphical.target  comme target par défaut
+	
+	- systemctl set-default graphical.target
+
+
+
+

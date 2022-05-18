@@ -1,0 +1,12 @@
+afficher le timezone 					ls -l /etc/localtime    
+
+
+Afficher tout les timezone existants 			timedatectl list-timezones
+ 
+
+
+
+Changer rtc times
+
+
+hwclock --set --date "15 Feb 2021 16:41" 

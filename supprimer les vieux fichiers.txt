@@ -1,0 +1,15 @@
+ la commade : 	find /chemin/vers_fichiers -mtime +nb_jour -exec rm {} \;
+
+-  find /chemin/vers_fichiers:	Le premier argument est le chemin d'accès aux fichiers.
+-  mtime		     :  est utilisé pour spécifier le nombre de jours d'ancienneté du fichier
+-  exec			     : 	vous permet de passer une commande
+-  rm			     : 	pour la suppressions
+-  {} \			     :	la commande est nécessaire à la fin pour terminer
+
+
+
+La commande:		find Home -name "*"  -mtime +60 -exec rm -f {} \
+Pour les lister:	find Home -name "*" -type f -mtime +60 -exec ls -l {} \;
+
+
+-	-type -f:	type recherche sur le type (d=répertoire, c=caractère, f=fichier normal)

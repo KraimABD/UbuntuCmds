@@ -1,0 +1,69 @@
+﻿Port par defaut: 23        
+le protocole: TCP
+  sudo apt-get install xinetd
+  sudo apt-get install telnetd
+  
+  
+ Désactiver Telnet:  sudo nano  /etc/xinetd.d/telnet
+
+#description: The telnet server serves telnet sessions: it uses
+#      unenc rypted username/passowrd pairs for authentication.
+service telnet
+{
+        flags           = REUSE
+        socket_type     = stream
+        wait            = no
+        user            = root
+        server          = /user/sbin/in.telnetd
+        log_on_failure  += USERID
+        disable         = yes
+        port            = 23
+}
+ 
+  
+  
+  
+  
+éditer le fichier de configuration:  /etc/inetd.conf          
+   écrire : telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/in.telnetd
+   
+éditer le fichier de configuration:  /etc/xinetd.conf  
+   
+   écrire: 
+
+   # Simple configuration file for xinetd
+#
+# Some defaults, and include /etc/xinetd.d/
+defaults
+{
+# Please note that you need a log_type line to be able to use log_on_success
+# and log_on_failure. The default is the following :
+# log_type = SYSLOG daemon info
+instances = 60
+log_type = SYSLOG authpriv
+log_on_success = HOST PID
+log_on_failure = HOST
+cps = 25 30
+}
+
+   éditer le fichier de configuration /etc/xinetd.d/telnet
+   
+   écrire:
+   
+  # default: on
+# description: The telnet server serves telnet sessions; it uses
+# unencrypted username/password pairs for authentication.
+service telnet
+{
+disable = no
+flags = REUSE
+socket_type = stream
+wait = no
+user = root
+server = /usr/sbin/in.telnetd
+log_on_failure += USERID
+}
+
+
+
+	Redemarrer le service: sudo /etc/init.d/xinetd restart

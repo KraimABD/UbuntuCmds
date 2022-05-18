@@ -1,0 +1,14 @@
+﻿Voir la configuration de la carte réseau : ifconfig
+
+apt-get install -y isc-dhcp-server
+éditer le fichier :  /etc/dhcp/dhcpd.conf
+chercher '# A slightly different configuration for an internal subnet'
+Redemarrer: service isc-dhcp-server restart
+ou        : /etc/init.d/isc-dhcp-server  restart
+ Vérifier DHCP à marche : /etc/init.d/isc-dhcp-server status 
+
+
+
+restart:
+
+  ifconfig enp0s3 up/down

@@ -1,0 +1,14 @@
+﻿Connaître la version du noyau en cours d'utilisation:
+Pour connaître la version de son noyau Linux utilisé, son nom, la version du compilateur utilisé, taper dans un terminal la commande suivante:
+		cat /proc/version
+Pour connaître seulement la version du noyau en cours d'utilisation :
+		uname -mr
+
+Lister les noyaux installés:
+Au fil des mises à jour plusieurs noyaux se retrouvent installés sur une machine, pour connaître la liste des noyaux installés, copier-coller dans un terminal :
+		dpkg -l | awk '!/^rc/ && / linux-(c|g|h|i|lo|m|si|t)/{print $1,$2,$3,$4 | "sort -k3 | column -t"}'
+		
+
+Pour lister les dépôts PPA présents sur votre système, dans un terminal, saisir la commande suivante :
+
+ls -l /etc/apt/sources.list.d/

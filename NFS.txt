@@ -1,0 +1,34 @@
+﻿	
+						Server NFS  192.168.1.100
+	
+	installation: $ sudo apt install nfs-kernel-server
+	Editer  /etc//exports  (écrire:'DossierPartagé' 192.168.1.200/24  '(rw)'    (/ '(ro)' / '(wo)')
+	Créer le dossier de Partage:  sudo mkdir '/''DossierPartage'  /'DossierPartage')
+	Redemarrer le service NFS : sudo service nfs  restart 
+	
+	
+						Clien NFS  192.168.1.200
+						
+	Créer un point de montage:   sudo mkdir /'home'/'otmane'/'Bureau'/'PointdeMontage'
+	motage:   sudo mount -t nfs 192.168.1.100:/'DossierPartagé'   /'home'/'otmane'/'Bureau'/'PointdeMontage'     (-t = type)
+	déconnecter le partage : sudo umount /'home'/'otmane'/'Bureau'/'PointdeMontage'   
+	
+	
+	
+	192
+	152
+	153
+	
+	
+	
+	192.168.7.253/23(rw,sync,no_subtree_check)
+	192.168.7.252/23 (rw,sync,no_subtree_check)
+	
+	ufw allow from 192.168.7.253/23 to any port nfs
+	ufw allow from 192.168.7.252/23 to any port nfs
+	
+	
+	
+root@Ldpmis2:~# firewall-cmd --add-port=2049/tcp
+root@Ldpmis2:~# firewall-cmd --permanent --add-port=2049/tcp
+	

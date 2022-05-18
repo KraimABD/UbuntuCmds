@@ -1,0 +1,15 @@
+
+chercher le nom d'un paquet
+
+apt-cache search <mot clé>
+
+touch fichier1 fichier2 fichier3 = touch fichier{1,2,3}
+
+site administration reseau sous linux
+
+	https://fr.wikibooks.org/wiki/Administration_réseau_sous_Linux/Samba
+	
+	
+	http://ubuntuhandbook.org/index.php/2020/01/install-kernel-5-5-ubuntu/
+	
+	https://linux.developpez.com/formation_debian/install-reseau.html
